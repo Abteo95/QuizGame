@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 🏠 SCHERMATA PRINCIPALE -->
+  <div id="home" class="container">
+    <h2>🏆 Quiz Game</h2>
+    <button onclick="vaiASceltaNome()">🎮 Gioca</button>
+    <button onclick="mostraClassifica()">📊 Classifica</button>
+  </div>
+
+  <!-- 👤 SCHERMATA INSERIMENTO NOME -->
+  <div id="sceltaNome" class="container" style="display:none;">
+    <h2>Inserisci il tuo nome</h2>
+    <input id="nomeGiocatore" type="text" placeholder="Es: Carmelo" />
+    <button onclick="iniziaQuiz()">Inizia</button>
+  </div>
+
+  <!-- 🧠 SCHERMATA QUIZ -->
+  <div id="quiz" class="container" style="display:none;">
+    <h2>🏆 Quiz Game</h2>
+    <div class="info-gioco">
+      <div><strong>Giocatore:</strong> <span id="giocatoreNome"></span></div>
+      <div><strong>Tempo:</strong> <span id="tempo">0</span>s</div>
+	  <!--<div><strong>Score:</strong> <span id="score">0</span>s</div>-->
+      <div><strong>Domande:</strong> <span id="domandaAttuale">1</span>/20</div>
+    </div>
+    <div id="domanda" class="domanda"></div>
+    <div id="risposte" class="risposte"></div>
+    <button id="nextBtn" style="display:none;" onclick="vaiAvanti()">Prossima domanda</button>
+  </div>
+
+  <!-- 🏁 FINE QUIZ -->
+  <div id="fine" class="container" style="display:none;">
+    <h2>🏆 Fine</h2>
+    <p>Risposte corrette: <span id="risposteCorrette"></span>/20</p>
+    <p id="messaggioFinale"></p>
+    <button onclick="tornaHome()">🏠 Torna alla Home</button>
+  </div>
+
+  <!-- 📊 CLASSIFICA -->
+  <div id="classifica" class="container" style="display:none;">
+    <h3>Classifica Top 10</h3>
+    <ul id="listaClassifica"></ul>
+    <button onclick="tornaHome()">🏠 Torna alla Home</button>
+  </div>
+
+  <script src="domande.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h2 {
+	margin-top:20px;
+	margin-bottom:40px;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #f2f2f2;
+  color: #333;
+  padding: 1rem;
+  text-align: center;
+}
+
+.container {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+  max-width: 150px;
+  margin-bottom: 2rem;
+}
+
+.logo-small {
+  max-width: 100px;
+  margin-bottom: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  background: #778899;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #708090;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.info-gioco {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  animation: glow 1.5s infinite alternate;
+  padding:5px;
+}
+
+.domanda {
+  font-size: 18px;
+  margin-bottom: 1rem;
+  border: 4px solid transparent;
+  border-image: linear-gradient(45deg, #ff00cc, #3333ff);
+  border-image-slice: 1;
+  animation: glow 1.5s infinite alternate;
+  padding:5px;
+}
+
+.risposte button {
+  display: block;
+  width: 100%;
+  background: #e0e0e0;
+  margin: 1.5rem 0;
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  transition: 0.3s;
+  color:black;
+}
+
+.risposte button:hover {
+  background: #d5d5d5;
+}
+
+.risposte button.corretta {
+  background-color: #4CAF50 !important;
+  color: white;
+  animation: pulse 0.4s ease;
+}
+
+.risposte button.errata {
+  background-color: #f44336 !important;
+  color: white;
+  animation: vibra 0.3s ease;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes vibra {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* 📱 Mobile responsive */
+@media (max-width: 600px) {
+  .info-gioco {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .logo {
+    max-width: 120px;
+  }
+
+  button {
+    font-size: 1rem;
+  }
+}
+
+#messaggioFinale {
+	margin: 20px;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: bold;
+}
