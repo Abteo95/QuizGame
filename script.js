@@ -192,15 +192,30 @@ function fineQuiz() {
 }
 
 // Salva la classifica (su file/PHP - opzionale)
-function inviaClassifica() {
+function inviaClassifica(punteggioDaInviare) {
   const formData = new FormData();
   formData.append("nome", nomeGiocatore);
-  formData.append("punteggio", punteggio);
+  formData.append("punteggio", punteggioDaInviare);
 
-  fetch("salva_classifica.php", {
+  fetch("https://tuo-server.com/salva_classifica.php", {
     method: "POST",
     body: formData
-  }).then(res => res.text())
-    .then(console.log)
-    .catch(err => console.error("Errore nel salvataggio classifica:", err));
+  })
+  .then(resp => resp.text())
+  .then(text => {
+    if (text === "Esiste già") {
+      if (confirm("Nome già presente. Vuoi sovrascrivere?")) {
+        formData.append("force", "true");
+        return fetch("https://tuo-server.com/salva_classifica.php", {
+          method: "POST",
+          body: formData
+        }).then(r => r.text());
+      }
+    }
+    return text;
+  })
+  .then(final => console.log("Risultato:", final))
+  .catch(err => console.error(err));
 }
+
+
