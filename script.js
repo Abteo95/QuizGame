@@ -192,30 +192,21 @@ function fineQuiz() {
 }
 
 // Salva la classifica (su file/PHP - opzionale)
-function inviaClassifica(punteggioDaInviare) {
+function inviaClassifica() {
   const formData = new FormData();
   formData.append("nome", nomeGiocatore);
-  formData.append("punteggio", punteggioDaInviare);
+  formData.append("punteggio", punteggio_totale);  // punteggio calcolato
+  formData.append("tempo", tempo);               // tempo impiegato
 
-  fetch("https://tuo-server.com/salva_classifica.php", {
+  fetch("https://abteo.gt.tc/salva_classifica.php", {
     method: "POST",
     body: formData
   })
-  .then(resp => resp.text())
-  .then(text => {
-    if (text === "Esiste già") {
-      if (confirm("Nome già presente. Vuoi sovrascrivere?")) {
-        formData.append("force", "true");
-        return fetch("https://tuo-server.com/salva_classifica.php", {
-          method: "POST",
-          body: formData
-        }).then(r => r.text());
-      }
-    }
-    return text;
-  })
-  .then(final => console.log("Risultato:", final))
-  .catch(err => console.error(err));
+    .then(response => response.text())
+    .then(text => {
+      console.log("✅ Risposta dal server:", text);
+    })
+    .catch(err => {
+      console.error("❌ Errore nel salvataggio della classifica:", err);
+    });
 }
-
-
